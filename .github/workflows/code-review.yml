@@ -1,23 +1,23 @@
-name: AI Code Review
+# name: AI Code Review
 
-on:
-  pull_request:
-    types: [opened, synchronize, reopened]
-  issues:
-    types: [opened, reopened]
+# on:
+#   pull_request:
+#     types: [opened, synchronize, reopened]
+#   issues:
+#     types: [opened, reopened]
 
-jobs:
-  repofix:
-    runs-on: ubuntu-latest
-    steps:
-      - name: Run RepoFixAI
-        uses: Manav916/llm-code-review@main
-        with:
-          groq_api_key: ${{ secrets.GROQ_API_KEY }}
-          groq_model: 'llama-3.1-8b-instant'
-          github_token: ${{ secrets.PERSONAL_GIT_TOKEN }}
-          # exclude_extensions: 'txt'
-          repo_owner: ${{ github.repository_owner }}
-          repo_name: ${{ github.event.repository.name }}
-          event_number: ${{ github.event.number || github.event.issue.number }} # when listening for both pull requests and issues
-          event_name: ${{ github.event_name }}
+# jobs:
+#   repofix:
+#     runs-on: ubuntu-latest
+#     steps:
+#       - name: Run RepoFixAI
+#         uses: Manav916/llm-code-review@main
+#         with:
+#           groq_api_key: ${{ secrets.GROQ_API_KEY }}
+#           groq_model: 'openai/gpt-oss-120b'
+#           github_token: ${{ secrets.PERSONAL_GIT_TOKEN }}
+#           # exclude_extensions: 'txt'
+#           repo_owner: ${{ github.repository_owner }}
+#           repo_name: ${{ github.event.repository.name }}
+#           event_number: ${{ github.event.number || github.event.issue.number }} # when listening for both pull requests and issues
+#           event_name: ${{ github.event_name }}
